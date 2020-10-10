@@ -1,0 +1,18 @@
+.formContainer{
+    margin: 10px;
+    .inlineInput{
+        display: flex;
+
+        .inlineItems{
+            flex:1
+        }
+    }
+
+    .modalBtn{
+        float: right;
+        button{
+            margin-left: 10px;
+        }
+    }
+
+}

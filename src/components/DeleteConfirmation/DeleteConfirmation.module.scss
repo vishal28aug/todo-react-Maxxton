@@ -1,0 +1,15 @@
+.todoItem{
+    font-size: 20px;
+    .todoTitle{
+        font-weight: bold;
+        padding-right: 3px;
+    }
+}
+
+.todoActionBtn{
+    font-size: 17px;
+    button{
+        margin-left: 3px;
+        float: right;
+    }
+}

@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import styles from "./App.module.scss";
+import Tabs from "./components/tabs/Tabs";
+import GroupBy from "./components/GroupBy/GroupBy";
+import Serach from "./components/search/Search";
+import AddTaskButton from "./components/AddTaskButton/AddTaskButton";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      <header>ToDo App </header>
+      <div className={styles.actions}>
+        <GroupBy></GroupBy>
+        <Serach></Serach>
+      </div>
+      <Tabs></Tabs>
+      <AddTaskButton></AddTaskButton>
     </div>
   );
-}
+};
 
 export default App;
