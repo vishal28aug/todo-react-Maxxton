@@ -1,8 +1,8 @@
 ## Steps To run
-Clone the repo
-open terminal inside the project location
-Type "npm install"
-Now run the project using "npm start"
+Clone the repo<br />
+open terminal inside the project location<br />
+Type "npm install"<br />
+Now run the project using "npm start"<br />
 
 
 ### `npm start`
