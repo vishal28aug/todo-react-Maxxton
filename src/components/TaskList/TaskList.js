@@ -205,13 +205,7 @@ const TaskList = (props) => {
               >
                 <td>{todo.title}</td>
                 <td>{renderPriority(todo.priority)}</td>
-                <td>
-                  {new Intl.DateTimeFormat("en-US", {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric",
-                  }).format(todo.createdAt)}
-                </td>
+                <td>{todo.createdAt}</td>
                 <td>{todo.dueDate}</td>
                 <td className={styles.center}>
                   <span
@@ -284,13 +278,7 @@ const TaskList = (props) => {
           >
             <td>{todo.title}</td>
             <td>{renderPriority(todo.priority)}</td>
-            <td>
-              {new Intl.DateTimeFormat("en-US", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              }).format(todo.createdAt)}
-            </td>
+            <td>{todo.createdAt}</td>
             <td>{todo.dueDate}</td>
             <td className={styles.center}>
               <span

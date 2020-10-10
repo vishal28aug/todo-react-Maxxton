@@ -5,10 +5,10 @@ import { useDispatch } from "react-redux";
 const DeleteConfirmation = (props) => {
   const dispatch = useDispatch();
 
-/**
- * Dispatch 'DELETE_TODO' action to delete the todo
- */
-const deleteTodo = () => {
+  /**
+   * Dispatch 'DELETE_TODO' action to delete the todo
+   */
+  const deleteTodo = () => {
     dispatch({
       type: "DELETE_TODO",
       payload: props.todo,
@@ -32,14 +32,7 @@ const deleteTodo = () => {
       </div>
       <div className={Styles.todoItem}>
         <span className={Styles.todoTitle}>Created On :</span>
-        <span>
-          {" "}
-          {new Intl.DateTimeFormat("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          }).format(props?.todo?.createdAt)}
-        </span>
+        <span>{props?.todo?.createdAt}</span>
       </div>
       <div className={Styles.todoItem}>
         <span className={Styles.todoTitle}>Priority:</span>
@@ -52,7 +45,7 @@ const deleteTodo = () => {
       <hr />
       <div className={Styles.todoActionBtn}>
         <span>Do you want to delete this task?</span>
-        <button className="btn btn-danger" onClick={() => props.handleModal()}> 
+        <button className="btn btn-danger" onClick={() => props.handleModal()}>
           No
         </button>
         <button className="btn btn-success" onClick={() => deleteTodo()}>

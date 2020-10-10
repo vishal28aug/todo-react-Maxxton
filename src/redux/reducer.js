@@ -5,46 +5,46 @@ let initalState = {
   todoList: [
     {
       id:1,
-      title: "Learn React",
-      description: "learn all the basics and advanced of react",
-      createdAt: 1601721574245,
-      dueDate: null,
+      title: "Design the solution	",
+      description: "dentify resources to be monitored.",
+      createdAt: "2020-10-11",
+      dueDate: "2020-10-13",
       priority: "1",
       currentState: true,
     },
     {
       id:2,
-      title: "Learn Vue",
-      description: "learn all the basics and advanced of react",
-      createdAt: 1601721574245,
-      dueDate: null,
+      title: "Prepare for implementation",
+      description: "Order the server hardware for production as well as test/quality assurance (QA).",
+      createdAt: "2020-10-10",
+      dueDate: "2020-10-12",
       priority: "2",
       currentState: false,
     },
     {
       id:3,
-      title: "Learn Redux",
-      description: "learn all the basics and advanced of react",
-      createdAt: 1601721574245,
-      dueDate: null,
+      title: "Install the product in the test/QA environment.",
+      description: "Install Tivoli Business Systems Manager and appropriate maintenance on the test LPAR.",
+      createdAt: "2012-10-10",
+      dueDate: "2013-10-1",
       priority: "3",
       currentState: true,
     },
     {
       id:4,
-      title: "Learn Angular",
-      description: "learn all the basics and advanced of react",
-      createdAt: 1601721574245,
-      dueDate: null,
+      title: "Schedule jobs",
+      description: "Tivoli Business Systems Manager SQL server jobs",
+      createdAt: "2014-10-10",
+      dueDate: "2015-10-13",
       priority: "4",
       currentState: false,
     },
     {
       id:5,
-      title: "Learn Node",
-      description: "learn all the basics and advanced of react",
-      createdAt: 1601721681228,
-      dueDate: 1601721681228,
+      title: "Install the product in the production environment.",
+      description: "Configure servers, Source/390 on the production LPARs, event enablement on the Tivoli Enterprise Console server, and verify connectivity.",
+      createdAt: "2017-10-25",
+      dueDate: "2018-10-15",
       priority: "1",
       currentState: true,
     },
@@ -52,8 +52,8 @@ let initalState = {
       id:6,
       title: "Learn React",
       description: "learn all the basics and advanced of react",
-      createdAt: 1601721696810,
-      dueDate: 1601721696810,
+      createdAt: '2019-10-21',
+      dueDate: '2020-11-13',
       priority: "2",
       currentState: false,
     },
@@ -68,7 +68,7 @@ function TodoReducer(state = initalState, action) {
     case TodoActions.ADD_TODO: {
       return {
         ...state,
-        todoList: [...state.todoList, action.payload],
+        todoList: [action.payload, ...state.todoList],
       };
     }
     case TodoActions.UPDATE_TODO: {
@@ -102,7 +102,7 @@ function TodoReducer(state = initalState, action) {
     }
     case TodoActions.SEARCH: {
       let searchedValue = action.payload;
-      let searchedResult = state.todoList.filter((todo) => todo.title.includes(searchedValue));
+      let searchedResult = state.todoList.filter((todo) => todo.title.toLowerCase().includes(searchedValue.toLowerCase()));
       return{
         ...state,
         filteredData:searchedResult,

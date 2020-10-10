@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Form = (props) => {
   const todoListLength = useSelector((state) => state.todoList.length); //Gets todoList length to genrate a unqiue id
-  const [summary, setSummary] = useState(); //To get todo summart(title)
-  const [description, setDescription] = useState(); // To get todo description
-  const [dueDate, setDueDate] = useState(); //To get todo due Date
-  const [priority, setPriority] = useState(); // To get todo priority
+  const [summary, setSummary] = useState(""); //To get todo summart(title)
+  const [description, setDescription] = useState(""); // To get todo description
+  const [dueDate, setDueDate] = useState(""); //To get todo due Date
+  const [priority, setPriority] = useState(""); // To get todo priority
 
   // Sets the default value to all field if modal is opened in Edit or Read mode
   useEffect(() => {
     setSummary(props?.selectedTodo?.title || "");
     setDescription(props?.selectedTodo?.description || "");
     setDueDate(props?.selectedTodo?.dueDate || "");
-    setPriority(props?.selectedTodo?.priority || "");
+    setPriority(props?.selectedTodo?.priority || "1");
   }, [props]);
 
   const dispatch = useDispatch();
@@ -53,11 +53,13 @@ const Form = (props) => {
    * @param {*} event
    */
   const saveTodo = (event) => {
+    event.preventDefault();
+    let today = new Date();
     let todo = {
       id: props?.selectedTodo?.id || todoListLength + 1,
       title: summary,
       description: description,
-      createdAt: props?.selectedTodo?.createdAt || Date.now(), //Current Date and Time
+      createdAt: props?.selectedTodo?.createdAt || `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`, //Current
       dueDate: dueDate,
       priority: priority,
       currentState: props?.selectedTodo?.currentState || false, //Pending
@@ -70,8 +72,7 @@ const Form = (props) => {
       : dispatch({
           type: "ADD_TODO",
           payload: todo,
-        });
-    event.preventDefault();
+        });    
     props.handleModal(); //Closing Modal
   };
 
@@ -90,6 +91,8 @@ const Form = (props) => {
             value={summary}
             required
             readOnly={props.isReadOnly}
+            maxLength="140"
+            minLength="10"
           />
         </div>
         <label htmlFor="Description">Description</label>
@@ -102,6 +105,8 @@ const Form = (props) => {
           value={description}
           required
           readOnly={props.isReadOnly}
+          maxLength="500"
+          minLength="10"
         ></textarea>
         <div className={Styles.inlineInput}>
           <div className={Styles.inlineItems}>
@@ -115,7 +120,6 @@ const Form = (props) => {
                 placeholder="Date"
                 onChange={handleChange}
                 value={dueDate}
-                required
                 readOnly={props.isReadOnly}
               />
             </div>
@@ -126,7 +130,7 @@ const Form = (props) => {
               className="custom-select"
               id="priority"
               onChange={handleChange}
-              defaultValue={priority}
+              value={priority}
               disabled={props.isReadOnly}
             >
               <option value="1">None</option>
