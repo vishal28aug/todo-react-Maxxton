@@ -330,7 +330,7 @@ const TaskList = (props) => {
   };
 
   return (
-    <div>
+    <div style={{overflowX:'auto'}}>
       <table>
         <thead>
           <tr>

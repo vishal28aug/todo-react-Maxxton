@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line
 import styles from "./Tabs.module.scss";
 import TaskList from "../TaskList/TaskList";
 

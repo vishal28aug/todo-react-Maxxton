@@ -2,3 +2,10 @@
   margin: 10px;
 
 }
+
+  /* Landscape phones and down */
+  @media (max-width: 480px) {
+    .group_cotainer{
+      width: -webkit-fill-available;
+    }
+  }

@@ -2,10 +2,15 @@
     margin: 10px;
     .inlineInput{
         display: flex;
-
         .inlineItems{
             flex:1
         }
+    }
+
+    @media (max-width: 480px) {
+      .inlineInput{
+        flex-direction: column;
+      }
     }
 
     .modalBtn{
